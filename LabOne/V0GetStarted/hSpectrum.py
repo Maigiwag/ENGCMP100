@@ -12,9 +12,9 @@
 # Electrical and Computer Engineering
 # All rights reserved.
 #
-# Student name:
-# Student CCID:
-# Others:
+# Student name: Jason Wang 
+# Student CCID: jason20 
+# Others: 
 #
 # To avoid plagiarism, list the names of persons, Version 0 author(s)
 # excluded, whose code, words, ideas, or data you used. To avoid
