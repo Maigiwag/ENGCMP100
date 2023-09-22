@@ -67,9 +67,9 @@ waveL = np.divide(waveL, (10**-9)) #making the data from above into nanometers t
 ##ERROR ANALYSIS
 #finds difference between nist and bohr and then finds the worst case
 dif = nist - waveL
-worstCaseScenario = np.max(np.abs(dif))
-worstCaseScenario = np.round(worstCaseScenario, decimals=3)
-print(f"Worst-case error: {worstCaseScenario} nm")
+worstCaseScenario = np.max(np.abs(dif))   #finds the worse case / error within the difference
+worstCaseScenario = np.round(worstCaseScenario, decimals=3)   
+print(f"Worst-case error: {worstCaseScenario} nm")   #rounds the error to 3 sig digs and gives user that data
 
 
 ##Plotting 
