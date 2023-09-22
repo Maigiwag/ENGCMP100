@@ -12,10 +12,10 @@
 # Electrical and Computer Engineering
 # All rights reserved.
 #
-# Student name: Jason Wang (100%)
+# Student name: Jason Wang (99%)
 # Student CCID: jason20 - 1802598
-# Others: 
-#       All code is mine however i refered to the given examples 
+# Others:  Farhan Zaman(1%)
+#       All code is mine however i refered to the given examples and receieved an idea for string formatting from a classmate 
 # futhermore i also refered to online documentation of MatPlotLib for how specific functions worked
 #
 # To avoid plagiarism, list the names of persons, Version 0 author(s)
@@ -68,8 +68,7 @@ waveL = np.divide(waveL, (10**-9)) #making the data from above into nanometers t
 #finds difference between nist and bohr and then finds the worst case
 dif = nist - waveL
 worstCaseScenario = np.max(np.abs(dif))   #finds the worse case / error within the difference
-worstCaseScenario = np.round(worstCaseScenario, decimals=3)   
-print(f"Worst-case error: {worstCaseScenario} nm")   #rounds the error to 3 sig digs and gives user that data
+print(f"Worst-case error: { format(worstCaseScenario,'.3f') } nm")   #rounds the error to 3 sig digs and gives user that data
 
 
 ##Plotting 
