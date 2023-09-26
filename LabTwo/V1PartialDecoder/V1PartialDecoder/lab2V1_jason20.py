@@ -2,9 +2,9 @@
 # Electrical and Computer Engineering
 # All rights reserved.
 #
-# Student name:
-# Student CCID:
-# Others:
+# Student name: jason wang (100%)
+# Student CCID: jason20
+# Others: all code is my own 
 #
 # To avoid plagiarism, list the names of persons, Version 0 author(s)
 # excluded, whose code, words, ideas, or data you used. To avoid
@@ -21,8 +21,23 @@
 #
 import numpy as np
 
-print('Version 0')
+print('Version 1')
+# ----------Students write/modify their code below here ---------------------
+
 code = input('Please enter a code to break: ')
-test = 5
 code = np.array(list(code),dtype=int)
-print("The code entered is %s" % code)
+if len(code) == 9: #rule 1 testing if code is 9 digits long
+    oddEvenTest = code.sum()
+    if oddEvenTest % 2 != 0: #rule 2 testing if code is even or odd
+        day = (code[2] * code[1]) - code[0]  #calculating rule 3
+        print(f"Day = {day}")  #printing result for rule 3
+        place = code[2]**code[1] 
+        if place % 3 == 0:                 #calculating for rule 4 if value is diisible by 3
+            place = code[5] - code[4]
+        else:
+            place = code[4] - code[5]
+        print(f"Place = {place}") #displaying place
+    else:
+        print("Decoy Message: Sum is even.")
+else: 
+    print("Decoy Message: Not a nine-digit number.")
