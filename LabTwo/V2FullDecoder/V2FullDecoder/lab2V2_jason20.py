@@ -25,10 +25,9 @@ print('Lab 2 - Version 2')
 # ----------Students write/modify their code below here ---------------------
 
 #arrays for rules 3 and 4 so that the output is written correctly
-
 Days = ('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')
 Places = ('bridge', 'library', 'river crossing', 'airport', 'bus terminal', 'hospital', 'railway station')
-valid = np.arange(1,8)
+valid = np.arange(1,8)  #uses this array to check if rule 3 and 4 are valid 
 
 code = input('Please enter a code to break: ')
 code = np.array(list(code),dtype=int)
@@ -42,22 +41,26 @@ if len(code) == 9:
 
         #rule 3 - multiplying the third and second term and subtracting by the first
         #then checking if that value lies within the range of 1,7 
-        day = (code[2] * code[1]) - code[0]  
-        if day in valid:
+        day = (code[2] * code[1]) - code[0]   
+        if day in valid:  #checking if the value is valid using the tuple created above
 
             #rule 4 - finding the answer of the third term to the power of the second term 
             #then using %3 like for rule 2 we can check if this number is divisible by 3
-            place = code[2]**code[1] 
-            if place % 3 == 0:                 
+            place = code[2]**code[1]
+            if place % 3 == 0:
                place = code[5] - code[4]
             else:
                 place = code[4] - code[5]
-            if place in valid:
+            if place in valid:  #checking if the value is valid using the tuple created above
                 #if the code had passed all 4 rules this print funtion will display the place and time 
                 print(f"Rescued on {Days[day-1]} at the {Places[place-1]}") 
+                #this line uses the two tuples created at the top of the program to
+                #correlate values to time and location to be outputted directly
+                #e.g a Day value of 1 correlates to the [0] value of the tuple Days 
+                
             
-            
-            #all error messages that lead to program closing 
+            #if at any point of the program it fails an 'if statement' 
+            #it will reroute to the corroponding else statement and the program will end
             else:
                 print("Decoy Message: Invalid rendezvous point.")
         else:
@@ -66,3 +69,7 @@ if len(code) == 9:
         print("Decoy Message: Sum is even.")
 else: 
     print("Decoy Message: Not a nine-digit number.")
+#all error messages 
+
+
+
