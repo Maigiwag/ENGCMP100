@@ -41,8 +41,8 @@ if len(code) == 9:
 
         #rule 3 - multiplying the third and second term and subtracting by the first
         #then checking if that value lies within the range of 1,7 
-        day = (code[2] * code[1]) - code[0]   
-        if day in valid:  #checking if the value is valid using the tuple created above
+        day = (code[2] * code[1]) - code[0]
+        if day in valid:  #checking if the value is valid using the tuple created at beggining of program
 
             #rule 4 - finding the answer of the third term to the power of the second term 
             #then using %3 like for rule 2 we can check if this number is divisible by 3
@@ -51,12 +51,13 @@ if len(code) == 9:
                place = code[5] - code[4]
             else:
                 place = code[4] - code[5]
-            if place in valid:  #checking if the value is valid using the tuple created above
+            if place in valid:  #checking if the value is valid using the tuple created at beggining of program
                 #if the code had passed all 4 rules this print funtion will display the place and time 
                 print(f"Rescued on {Days[day-1]} at the {Places[place-1]}") 
                 #this line uses the two tuples created at the top of the program to
                 #correlate values to time and location to be outputted directly
-                #e.g a Day value of 1 correlates to the [0] value of the tuple Days 
+                #e.g a day value of 1 correlates to the [0] value of the tuple Days 
+
                 
             
             #if at any point of the program it fails an 'if statement' 
