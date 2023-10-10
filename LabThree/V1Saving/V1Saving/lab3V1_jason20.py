@@ -37,7 +37,7 @@ sciFinalTuit= 0
 engFinalTuit = 0
 
 #---SAVING CALCULATION---#
-for i in range(216):
+for i in range(215):
     Saving += [(Saving[i]+(Saving[i]*(0.0625/12)))+200]
 
 
@@ -56,7 +56,7 @@ for i in range(4):
 
 
 #---PRINTING EVERYTHING TO USER---#
-print(f'''The savings amount is ${format(Saving[215], '.2f')}
+print(f'''The savings amount is ${format(Saving[-1], '.2f')}
 The cost of the Arts program is ${format(artFinalTuit,'.2f')}
 The cost of the Science program is ${format(sciFinalTuit, '.2f')}
 The cost of the Engineering program is ${format(engFinalTuit, '.2f')}
