@@ -84,7 +84,7 @@ while not valid:
 #---OPTIMIZATION---#
 if choice == 1:
     while not foundOpti:
-        if optiSav[-1] < artFinalTuit:
+        if optiSav[-1] <= artFinalTuit:
             optiSav = [2000]
             monthcont += 1
             for i in range(215):
@@ -98,7 +98,7 @@ if choice == 1:
     print(f"The optimal monthly contribution amount is ${monthcont}")
 elif choice == 2:
     while not foundOpti:
-        if optiSav[-1] < sciFinalTuit:
+        if optiSav[-1] <= sciFinalTuit:
             optiSav = [2000]
             monthcont += 1
             for i in range(215):
@@ -112,7 +112,7 @@ elif choice == 2:
     print(f"The optimal monthly contribution amount is ${monthcont}")
 else:
     while not foundOpti:
-        if optiSav[-1] < engFinalTuit:
+        if optiSav[-1] <= engFinalTuit:
             optiSav = [2000]
             monthcont += 1
             for i in range(215):
