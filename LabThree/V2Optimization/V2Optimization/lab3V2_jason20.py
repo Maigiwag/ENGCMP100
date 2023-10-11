@@ -57,12 +57,14 @@ for i in range(4):
 print(f'''The savings amount is ${format(Saving[-1], '.2f')}
 The cost of the Arts program is ${format(artFinalTuit,'.2f')}
 The cost of the Science program is ${format(sciFinalTuit, '.2f')}
-The cost of the Engineering program is ${format(engFinalTuit, '.2f')}
+The cost of the Engg program is ${format(engFinalTuit, '.2f')}
 ''')
+
 
 ###---VERSION 2---###
 print("Version 2 - Solution")
 
+#---VARIABLES---#
 monthcont = 0
 choice = 0
 optiSav = [2000]
@@ -122,6 +124,8 @@ else:
     else:
         print("Unfortunately!!! You do not have enough saved for the engineering program")
     print(f"The optimal monthly contribution amount is ${monthcont}")
+
+
 
 #---PLOT---#
 fig,ax = plt.subplots()

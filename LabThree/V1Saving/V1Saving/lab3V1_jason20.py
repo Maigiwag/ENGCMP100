@@ -59,7 +59,7 @@ for i in range(4):
 print(f'''The savings amount is ${format(Saving[-1], '.2f')}
 The cost of the Arts program is ${format(artFinalTuit,'.2f')}
 The cost of the Science program is ${format(sciFinalTuit, '.2f')}
-The cost of the Engineering program is ${format(engFinalTuit, '.2f')}
+The cost of the Engg program is ${format(engFinalTuit, '.2f')}
 ''')
 
 
