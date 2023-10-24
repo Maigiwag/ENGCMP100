@@ -13,9 +13,9 @@
 # Electrical and Computer Engineering
 # All rights reserved.
 #
-# Student name: jason wang 
+# Student name: jason wang (99%) 
 # Student CCID: jason 20
-# Others:
+# Others: vincent(1%)
 #
 # To avoid plagiarism, list the names of persons, Version 0 author(s)
 # excluded, whose code, words, ideas, or data you used. To avoid
@@ -30,52 +30,80 @@
 # followed by percentages as above. Email a link to or a copy of the
 # source to the lab instructor before the assignment is due.
 #
+
+##---VERSION ONE---##
+
 import scipy.io as io
 import numpy as np
+import matplotlib.pyplot as plt
 
-tsp = io.loadmat('tspData.mat',squeeze_me=True)
-tsp = np.ndarray.tolist(tsp['tsp'])
-file = open('tspAbout.txt','r')
-print(file.read())
-file.close()
-print()
-print("MAIN MENU")
-print("0. Exit program")
-print("1. Print database")
-print("2. Limit dimension")
-print("3. Plot one tour")
-print()
-choice = int(input("Choice (0-3)? "))
-while not (0 <= choice <= 3):
-    choice = int(input("Choice (0-3)? "))
 
-while choice != 0:
-    if choice == 1:
+def main():
+    tsp = io.loadmat('tspData.mat',squeeze_me=True)
+    tsp = np.ndarray.tolist(tsp['tsp'])
+    file = open('tspAbout.txt','r')
+    print(file.read())
+    file.close()
+
+    choice = menu()
+
+    while choice != 0:
+        if choice == 1:
+
+            tspPrint(tsp)
+
+        elif choice == 3:
+
+            tspPlot(tsp)
+
+        choice = menu()
+
+def menu():
         print()
-        print("NUM  FILE NAME  EDGE TYPE  DIMENSION  COMMENT")
-        for k in range(1,len(tsp)):
-            name = tsp[k][0]
-            edge = tsp[k][5]
-            dimension = tsp[k][3]
-            comment = tsp[k][2]
-            print("%3d  %-9.9s  %-9.9s  %9d  %s"
-                  % (k,name,edge,dimension,comment))
+        print("MAIN MENU")
+        print("0. Exit program")
+        print("1. Print database")
+        print("2. Limit dimension")
+        print("3. Plot one tour")
+        print()
+        choice = int(input("Choice (0-3)? "))
+        while not (0 <= choice <= 3):
+            choice = int(input("Choice (0-3)? "))
+        return choice
 
-    elif choice == 3:
+def tspPrint(tsp):
+    print()
+    print("NUM  FILE NAME  EDGE TYPE  DIMENSION  COMMENT")
+    for k in range(1,len(tsp)):
+        name = tsp[k][0]
+        edge = tsp[k][5]
+        dimension = tsp[k][3]
+        comment = tsp[k][2]
+        print("%3d  %-9.9s  %-9.9s  %9d  %s"
+            % (k,name,edge,dimension,comment))
+
+def tspPlot(tsp):
         num = int(input("Number (EUC_2D)? "))
         edge = tsp[num][5]
+        tsp1 = tsp[num]
         if edge == 'EUC_2D':
-            print("Valid (%s)!!!" % edge)
+            plotEuc2D(tsp1[10],tsp1[2],tsp1[0])
         else:
             print("Invalid (%s)!!!" % edge)
 
-    print()
-    print("MAIN MENU")
-    print("0. Exit program")
-    print("1. Print database")
-    print("2. Limit dimension")
-    print("3. Plot one tour")
-    print()
-    choice = int(input("Choice (0-3)? "))
-    while not (0 <= choice <= 3):
-        choice = int(input("Choice (0-3)? "))
+def plotEuc2D(coord, comment, name):
+    xPlot = []
+    yPlot = []
+    for i in range(len(coord)):
+        xPlot += [coord[i][0]]
+        yPlot += [coord[i][1]]
+    plt.plot(xPlot,yPlot,'o-', ms=3)
+    plt.plot([xPlot[0],xPlot[-1]],[yPlot[0],yPlot[-1]], 'r-')
+    plt.title(comment)
+    plt.xlabel("x-Cordinate")
+    plt.ylabel("y-Cordinate")
+    plt.legend([name])
+    plt.savefig('tspPlot.png')
+          
+
+main()

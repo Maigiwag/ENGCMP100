@@ -27,7 +27,7 @@ NUM  FILE NAME  EDGE TYPE  DIMENSION  COMMENT
   7  berlin52   EUC_2D            52  52 locations in Berlin (Groetschel)
   8  bier127    EUC_2D           127  127 Biergaerten in Augsburg (Juenger/Reinelt)
   9  brazil58   EXPLICIT          58  58 cities in Brazil (Ferreira)
- 10  brd14051   EUC_2D         14051  BR Deutschland in den Grenzen von 1989 (Bachem/Wottawa)
+ 10  brd14 051   EUC_2D         14051  BR Deutschland in den Grenzen von 1989 (Bachem/Wottawa)
  11  brg180     EXPLICIT         180  Bridge tournament problem (Rinaldi)
  12  burma14    GEO               14  14-Staedte in Burma (Zaw Win)
  13  ch130      EUC_2D           130  130 city problem (Churritz)
