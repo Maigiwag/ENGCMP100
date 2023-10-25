@@ -16,7 +16,7 @@
 # Student name: jason wang (99%) 
 # Student CCID: jason 20
 # Others: vincent(1%)
-#
+#   MatPlotLib Documentation was also referenced
 # To avoid plagiarism, list the names of persons, Version 0 author(s)
 # excluded, whose code, words, ideas, or data you used. To avoid
 # cheating, list the names of persons, excluding the ENCMP 100 lab
@@ -102,8 +102,10 @@ def plotEuc2D(coord, comment, name):
     plt.title(comment)
     plt.xlabel("x-Cordinate")
     plt.ylabel("y-Cordinate")
-    plt.legend([name])
+    plt.legend([name],loc = 'upper right')
     plt.savefig('tspPlot.png')
+    plt.clf()
+
           
 
 main()
