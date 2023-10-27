@@ -88,6 +88,7 @@ def tspPlot(tsp):
         tsp1 = tsp[num]
         if edge == 'EUC_2D':
             plotEuc2D(tsp1[10],tsp1[2],tsp1[0])
+            print("See tspPlot.png")
         else:
             print("Invalid (%s)!!!" % edge)
 
