@@ -94,7 +94,7 @@ def tspPrint(tsp):
 #there is no return output however it will display text to the user
 def tspPlot(tsp):
         numError = True
-        while numError == True or num < 1 or num > (len(tsp)):
+        while numError == True or num < 1 or num > (len(tsp)-1):
             num = input("Number (EUC_2D)? ")
             num,numError = checkInt(num)
         edge = tsp[num][5]
