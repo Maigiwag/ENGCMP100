@@ -58,8 +58,9 @@ def main():
 
 
 # Menu function displays all the necessary input information to the user 
-# this function takes no input 
-# however it will return the users input as an int after verifying if its valid 
+# [INPUT] N/A 
+# [RETURN] choice = INT 
+# SIDE EFFECTS: prints the menu for the user to interact with 
 def menu():
         numError = True
         print()
@@ -75,8 +76,9 @@ def menu():
         return choice
 
 #this funciton will display all avaliable datasets to attempt to create a plot with
-#it takes one input which is the tspData file stored in a variable
-#there is no return value however it will display text to the user 
+# [INPUT] tsp = LIST 
+# [RETURN] N/A 
+# SIDE EFFECTS: prints all the data in "tsp"
 def tspPrint(tsp):
     print()
     print("NUM  FILE NAME  EDGE TYPE  DIMENSION  COMMENT")
@@ -89,9 +91,9 @@ def tspPrint(tsp):
             % (k,name,edge,dimension,comment))
 
 #asks the user for a specific dataset to attempt to create a plot for 
-#it takes one input which is the tspDAta file stored in a variable 
-#if the data is able to be plotted it will then send the required info to the plotEuc2D function
-#there is no return output however it will display text to the user
+# [INPUT] tsp = LIST
+# [RETURN] N/A
+# SIDE EFFECTS: If the user input is a valid data set it will pass the correct info to "PlotEuc2D"
 def tspPlot(tsp):
         numError = True
         while numError == True or num < 1 or num > (len(tsp)-1):
@@ -106,9 +108,9 @@ def tspPlot(tsp):
             print("Invalid (%s)!!!" % edge)
 
 #plots the given information using matplotlib and then stores the plot as a png
-#it takes the cords, name, and other required information for a given dataset
-#using the inputted informaiton it then produces a graph that gets saved as a png
-#there is no return output 
+# [INPUT] coord = LIST , comment = Str , name = Str
+# [RETURN] N/A 
+# SIDE EFFECTS: After drawing the graph in matplotlib it will save it as a png for viewing
 def plotEuc2D(coord, comment, name):
     xPlot = []
     yPlot = []
@@ -124,7 +126,10 @@ def plotEuc2D(coord, comment, name):
     plt.savefig('tspPlot.png')
     plt.clf()
 
-
+# Calculates the minimum and maximum values of the TSP data set
+# [INPUT] tsp = LIST
+# [RETURN] minVal = INT, maxVal = INT 
+# SIDE EFFECTS: it will also display the MINIMUM and MAXIMUM values to the user
 def tspMinMax(tsp):
     minVal = int(tsp[1][3])
     maxVal = int(tsp[1][3])
@@ -138,7 +143,10 @@ def tspMinMax(tsp):
 Max dimension: {maxVal}''')   
     return minVal,maxVal
 
-
+# Asks the user for a number to limit the data set to and then modifys TSP to that limit
+# [INPUT] tsp = LIST , minVal = INT , maxVal = INT 
+# [RETURN] newtsp = LIST 
+# SIDE EFFECTS: based on the user input it will bound the TSP data to the LIMIT value and then set TSP to the limited TSP 
 def tspLimit(tsp,minVal,maxVal):
     newtsp = [tsp[0]]
     numError = True
@@ -154,8 +162,9 @@ def tspLimit(tsp,minVal,maxVal):
 
 
 #this funciton will check if a input is a valid integer so that the program will not crash
-#it accepts an variable of an unknown datatype
-#it returns a int or a false 
+#[INPUT] num = anything
+#[RETURN] num = INT,  error = BOOL 
+# *will only return int IF the INPUT was able to be int()
 def checkInt(num):
     try:
         num = int(num)
