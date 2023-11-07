@@ -11,9 +11,9 @@
 # Electrical and Computer Engineering
 # All rights reserved.
 #
-# Student name: Jason Wang
+# Student name: Jason Wang (99%)
 # Student CCID: jason20
-# Others:
+# Others: farhan(1%)
 #
 # To avoid plagiarism, list the names of persons, Version 0 author(s)
 # excluded, whose code, words, ideas, or data you used. To avoid
@@ -65,26 +65,13 @@ def loaddata(filename):
 
 def str2dict(line):
     lineList = line.split(',')
-    
     lineList.pop(5)
     for i in range(4):
         lineList[-i] = float(lineList[-i])
-    # for i in range(len(lineList)):
-    #     print(f'number {i}:   _{lineList[i]}_')
     numdate = lineList[0]
     strdateAD = lineList[1].split(' ')
     strdate = strdateAD[2]
     coord = (lineList[2],lineList[3],lineList[4])
-#     print(f'''
-# the numdate is: {numdate}
-# the strdate is: {strdate}
-# the coord is: {coord}
-#           ''')
-#     print(type(numdate))
-#     print(type(strdate))
-#     print(type(coord))
-#     print(type(coord[0]))
-#     quit()
     return {'numdate':numdate,'strdate':strdate,
             'coord':coord}
 
