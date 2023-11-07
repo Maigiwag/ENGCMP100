@@ -11,8 +11,8 @@
 # Electrical and Computer Engineering
 # All rights reserved.
 #
-# Student name:
-# Student CCID:
+# Student name: Jason Wang
+# Student CCID: jason20
 # Others:
 #
 # To avoid plagiarism, list the names of persons, Version 0 author(s)
@@ -53,7 +53,7 @@ def loaddata(filename):
             num = num+1
             if num % 10000 == 0:
                 print(filename,":",num,"line(s)")
-            datum = num2dict(num)
+            datum = num2dict(line)
             data.append(datum)
         else:
             break # for
@@ -63,14 +63,16 @@ def loaddata(filename):
         print(filename,":",num,"line(s)")
     return data
 
-def num2dict(numdate):
-    strdate = "Day "+str(numdate)
-    yaph = 6.98169e7 # Aphelion (km)
-    yprh = 4.60012e7 # Perihelion (km)
-    days = 87.9691 # Orbit period (d)
-    sine = (np.cos(2*np.pi*numdate/days)+1)/2
-    return {'numdate':numdate,'strdate':strdate,
-            'coord':(0,yprh+(yaph-yprh)*sine,0)}
+def num2dict(line):
+    print(line)
+    pass
+    # strdate = "Day "+str(numdate)
+    # yaph = 6.98169e7 # Aphelion (km)
+    # yprh = 4.60012e7 # Perihelion (km)
+    # days = 87.9691 # Orbit period (d)
+    # sine = (np.cos(2*np.pi*numdate/days)+1)/2
+    # return {'numdate':numdate,'strdate':strdate,
+    #         'coord':(0,yprh+(yaph-yprh)*sine,0)}
 
 def locate(data1):
     dist = [] # Vector lengths
