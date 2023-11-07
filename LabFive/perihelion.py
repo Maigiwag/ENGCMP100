@@ -53,8 +53,8 @@ def loaddata(filename):
             num = num+1
             if num % 10000 == 0:
                 print(filename,":",num,"line(s)")
-            datum = num2dict(line)
-            data.append(datum)
+            datum = str2dict(line)
+            data.append(datum) 
         else:
             break # for
     if noSOE:
@@ -63,16 +63,30 @@ def loaddata(filename):
         print(filename,":",num,"line(s)")
     return data
 
-def num2dict(line):
-    print(line)
-    pass
-    # strdate = "Day "+str(numdate)
-    # yaph = 6.98169e7 # Aphelion (km)
-    # yprh = 4.60012e7 # Perihelion (km)
-    # days = 87.9691 # Orbit period (d)
-    # sine = (np.cos(2*np.pi*numdate/days)+1)/2
-    # return {'numdate':numdate,'strdate':strdate,
-    #         'coord':(0,yprh+(yaph-yprh)*sine,0)}
+def str2dict(line):
+    lineList = line.split(',')
+    
+    lineList.pop(5)
+    for i in range(4):
+        lineList[-i] = float(lineList[-i])
+    # for i in range(len(lineList)):
+    #     print(f'number {i}:   _{lineList[i]}_')
+    numdate = lineList[0]
+    strdateAD = lineList[1].split(' ')
+    strdate = strdateAD[2]
+    coord = (lineList[2],lineList[3],lineList[4])
+#     print(f'''
+# the numdate is: {numdate}
+# the strdate is: {strdate}
+# the coord is: {coord}
+#           ''')
+#     print(type(numdate))
+#     print(type(strdate))
+#     print(type(coord))
+#     print(type(coord[0]))
+#     quit()
+    return {'numdate':numdate,'strdate':strdate,
+            'coord':coord}
 
 def locate(data1):
     dist = [] # Vector lengths
@@ -87,9 +101,14 @@ def locate(data1):
     return data2
 
 def select(data,ystep,month):
-    if len(data) > 10:
-        data = data[0:10]
-    return data
+    newData = [] 
+    for i in range(len(data)):
+        strData = data[i]["strdate"]
+        splitData = strData.split("-")
+        splitData[0] = int(splitData[0])
+        if splitData[1] in month  and (splitData[0]%ystep) == 0:
+             newData.append(data[i])
+    return newData
 
 def makeplot(data,filename):
     (numdate,strdate,arcsec) = precess(data)
@@ -120,6 +139,8 @@ def add2plot(numdate,actual):
     for k in range(len(numdate)):
         bestfit.append(r[0]*numdate[k]+r[1])
     plt.plot(numdate,bestfit,'b-')
-    plt.legend(["Actual data","Best fit line"])
+    plt.xlabel("Perihelion date")
+    plt.ylabel("Precession (arcsec)")
+    plt.legend(["Actual data","Best fit line"], loc = 'upper left')
 
 main()
