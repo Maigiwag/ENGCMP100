@@ -38,6 +38,10 @@ def main():
     data = select(data,25,('Jan','Feb','Mar'))
     makeplot(data,'horizons_results')
 
+#This functions opens the horizon results data set and then fileters tht data correctly to then be passed onto the main program 
+# [INPUTS] filename = FILE 
+# [OUTPUTS] data = LIST 
+# SIDE EFFECTS: also prints the file name and number of lines ot the user 
 def loaddata(filename):
     file = open(filename+'.txt','r')
     lines = file.readlines()
@@ -63,6 +67,9 @@ def loaddata(filename):
         print(filename,":",num,"line(s)")
     return data
 
+#takes the raw data and then breaks it apart into into a dictionary that is returned 
+# [INPUTS] line = STR 
+# [OUTPUTS] a dictionary containting: numdate, strdate, coord 
 def str2dict(line):
     lineList = line.split(',')
     lineList.pop(5)
@@ -75,6 +82,9 @@ def str2dict(line):
     return {'numdate':numdate,'strdate':strdate,
             'coord':coord}
 
+#using the COORD dictionary in the dataset it processes that data and then returns the processed data 
+# [INPUT] data1 = LIST 
+# [OUTPUT] data2 = LIST 
 def locate(data1):
     dist = [] # Vector lengths
     for datum in data1:
@@ -87,6 +97,9 @@ def locate(data1):
             data2.append(data1[k])
     return data2
 
+# filters out all data in the dataset with the parameters of ystep and month and then returns only the data that satisys all conditions
+# [INPUT] data = LIST, ystep = INT, month = LIST
+# [OUTPUT] newData = LIST 
 def select(data,ystep,month):
     newData = [] 
     for i in range(len(data)):
