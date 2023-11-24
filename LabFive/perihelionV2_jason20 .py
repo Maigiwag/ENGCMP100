@@ -163,7 +163,8 @@ def precess(data):
     return (numdate,strdate,arcsec)
 
 #plots the labels and line of best fit onto the graph 
-# numdate = LIST , actual = LIST 
+# [INPUT] numdate = LIST , actual = LIST 
+# [OUTPUT] n/a 
 def add2plot(numdate,actual):
     r = stats.linregress(numdate,actual)
     bestfit = []
