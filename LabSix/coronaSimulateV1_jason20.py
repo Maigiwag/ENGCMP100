@@ -9,9 +9,9 @@
 # Electrical and Computer Engineering
 # All rights reserved.
 #
-# Student name: Jason Wang
+# Student name: Jason Wang (95%)
 # Student CCID: jason20
-# Others:
+# Others: farhan (5%)
 #
 # To avoid plagiarism, list the names of persons, Version 0 author(s)
 # excluded, whose code, words, ideas, or data you used. To avoid
@@ -52,7 +52,13 @@ def opticalSystem(im,width):
     im = idft2(IMa,IMp-Dphi)
     return (im,Dphi)
 
-def occultSquare(im,_):
+#makes the input black and then returns that with the dimensions of a square 
+def occultSquare(im,width):
+    xStart = int(len(im[0])/2 - width/2)
+    yStart = int(len(im)/2 - width/2)
+    for i in range(yStart, yStart + width):
+        for j in range(xStart, xStart + width):
+            im[i][j] = 0
     return im
 
 # (IMa,IMp) = dft2(im) returns the amplitude, IMa, and phase, IMp, of the
@@ -74,24 +80,33 @@ def idft2(IMa,IMp):
     im[im > 1] = 1
     return im
 
-def gerchbergSaxton(im,maxIters,_):
+#this functions will take the image and specfic parameters to then create a set of images that have been refined
+def gerchbergSaxton(im,maxIters,Dphi):
     (IMa,IMp) = dft2(im)
     images = []
     for k in range(maxIters+1):
         print("Iteration %d of %d" % (k,maxIters))
-        im = idft2(IMa,IMp)
+        im = idft2(IMa,IMp +((Dphi*k)/maxIters))
         images.append(im)
     return images
 
+#after the images have been processed this will save the images into the root folder
 def saveFrames(images):
     shape = (images[0].shape[0],images[0].shape[1],3)
     image = np.zeros(shape,images[0].dtype)
     maxIters = len(images)-1
+    ax = plt.gca()
     for k in range(maxIters+1):
+        image[:,:,0] = images[k]
         image[:,:,1] = images[k]
+        image[:,:,2] = images[k]
         plt.imshow(image)
-        plt.title(str(k))
+        plt.title(f'Iteration {str(k)} of {len(range(maxIters))}')
+        ax.xaxis.set_tick_params(labelbottom=False)
+        ax.yaxis.set_tick_params(labelleft=False)
+        ax.set_xticks([])
+        ax.set_yticks([])
         plt.savefig('coronagraph'+str(k)+'.png')
-        plt.show()
+        #plt.show()
 
 main()
