@@ -1,3 +1,2 @@
-x = "hello"
-x+=" world"
-print(x)
+x= (1,2,3,4,5,6)
+print(sum(x))
