@@ -9,9 +9,9 @@
 # Electrical and Computer Engineering
 # All rights reserved.
 #
-# Student name: Jason Wang (90%)
+# Student name: Jason Wang (80%)
 # Student CCID: jason20
-# Others: farhan (5%) vincent (5%)
+# Others: farhan (5%) vincent (15%)
 #
 # To avoid plagiarism, list the names of persons, Version 0 author(s)
 # excluded, whose code, words, ideas, or data you used. To avoid
